@@ -137,6 +137,6 @@ picker.defaultDate = [NSDate date];
 ````
 如有bug或不足，接受各类pullRequest
 
-如有沟通交流，请联系QQ:391664725  注明 MTPanBack
+如有沟通交流，请联系QQ:391664725  注明 MTDatePicker
 
 ````
