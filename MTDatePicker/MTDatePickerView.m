@@ -245,6 +245,11 @@ static NSInteger const kMinYear = 30;
         for (int i = 1; i <= maxDay; i++) {
             [marr addObject:[NSString stringWithFormat:@"%d日",i]];
         }
+        
+        if ([marr indexOfObject:self.selectedDay] == NSNotFound) {
+            self.selectedDay = [marr lastObject];
+        }
+        
         return [marr copy];
         
     }else if ([self.yearArray indexOfObject:yearStr] == 0 &&
@@ -256,6 +261,11 @@ static NSInteger const kMinYear = 30;
         for (int i = (int)minDay; i <= array.count; i++) {
             [marr addObject:[NSString stringWithFormat:@"%d日",i]];
         }
+        
+        if ([marr indexOfObject:self.selectedDay] == NSNotFound) {
+            self.selectedDay = [marr firstObject];
+        }
+        
         return [marr copy];
     }
     
@@ -272,6 +282,11 @@ static NSInteger const kMinYear = 30;
         for (int i = 1; i <= maxMonth; i++) {
             [marr addObject:[NSString stringWithFormat:@"%d月",i]];
         }
+        
+        if ([marr indexOfObject:self.selectedMonth] == NSNotFound) {
+            self.selectedMonth = [marr lastObject];
+        }
+        
         return self.monthArray = [marr copy];
     }else if ([self.yearArray indexOfObject:yearStr] == 0 &&
               self.minDate != nil) {
@@ -281,6 +296,11 @@ static NSInteger const kMinYear = 30;
         for (int i = (int)minMonth; i <= 12; i++) {
             [marr addObject:[NSString stringWithFormat:@"%d月",i]];
         }
+        
+        if ([marr indexOfObject:self.selectedMonth] == NSNotFound) {
+            self.selectedMonth = [marr firstObject];
+        }
+        
         return self.monthArray = [marr copy];
     }
     
