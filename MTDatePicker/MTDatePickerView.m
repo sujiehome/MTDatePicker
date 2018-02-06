@@ -236,7 +236,7 @@ static NSInteger const kMinYear = 30;
 {
     NSArray *array = [self checkDaysWithYear:yearStr month:monthStr];
     self.monthArray = [self checkLimitMonthWithYear:yearStr];
-    if ([self.yearArray indexOfObject:yearStr] == self.yearArray.count - 1 &&
+    if ([self.yearArray indexOfObject:yearStr] == (self.isDescYear ? 0 : self.yearArray.count - 1) &&
         [self.monthArray indexOfObject:monthStr] == self.monthArray.count - 1 &&
         self.maxDate != nil) {
         //选中最大年份 最大月份
@@ -251,8 +251,7 @@ static NSInteger const kMinYear = 30;
         }
         
         return [marr copy];
-        
-    }else if ([self.yearArray indexOfObject:yearStr] == 0 &&
+    }else if ([self.yearArray indexOfObject:yearStr] == (self.isDescYear ? self.yearArray.count - 1 : 0) &&
               [self.monthArray indexOfObject:monthStr] == 0 &&
               self.minDate != nil) {
         //选中最小年份 最小月份
@@ -274,7 +273,7 @@ static NSInteger const kMinYear = 30;
 
 - (NSArray *)checkLimitMonthWithYear:(NSString *)yearStr
 {
-    if ([self.yearArray indexOfObject:yearStr] == self.yearArray.count - 1 &&
+    if ([self.yearArray indexOfObject:yearStr] == (self.isDescYear ? 0 : self.yearArray.count - 1) &&
         self.maxDate != nil) {
         //选中最大年份
         NSInteger maxMonth = [[self getNowDate:self.maxDate] month];
@@ -288,7 +287,7 @@ static NSInteger const kMinYear = 30;
         }
         
         return self.monthArray = [marr copy];
-    }else if ([self.yearArray indexOfObject:yearStr] == 0 &&
+    }else if ([self.yearArray indexOfObject:yearStr] == (self.isDescYear ? self.yearArray.count - 1 : 0) &&
               self.minDate != nil) {
         //选中最小年份
         NSInteger minMonth = [[self getNowDate:self.minDate] month];
@@ -475,6 +474,7 @@ static NSInteger const kMinYear = 30;
         self.selectedMonth = self.monthArray[0];
         self.selectedDay = self.dayArray[0];
     }
+    [self.picker reloadAllComponents];
 }
 
 #pragma mark - getter
