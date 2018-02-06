@@ -95,6 +95,8 @@ additionalText为附加按钮，一般用来当做至今，不限等。
 /********** 展示方法 *************/
 /** 展示模式 */
 @property (nonatomic, assign) MTDatePickerMode mode;
+/** 年份是否为降序排列 */
+@property (nonatomic, assign) BOOL isDescYear;
 
 /** 展示 */
 - (void)show;

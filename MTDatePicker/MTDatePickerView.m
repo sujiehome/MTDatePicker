@@ -155,7 +155,7 @@ static NSInteger const kMinYear = 30;
         for (int i = (int)minYear; i <= maxYear; i++) {
             [marr addObject:[NSString stringWithFormat:@"%d年",i]];
         }
-        self.yearArray = [marr copy];
+        self.yearArray = self.isDescYear ? [[marr copy] reverseObjectEnumerator].allObjects : [marr copy];
     }else if (self.minDate != nil) {
         NSInteger minYear = [[self getNowDate:self.minDate] year];
         
@@ -516,12 +516,12 @@ static NSInteger const kMinYear = 30;
         _leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
         _leftButton.tag = 10000;
         [_leftButton setTitle:@"取消"
-                       forState:UIControlStateNormal];
+                     forState:UIControlStateNormal];
         [_leftButton setTitleColor:[UIColor blackColor]
-                            forState:UIControlStateNormal];
+                          forState:UIControlStateNormal];
         [_leftButton addTarget:self
-                          action:@selector(buttonClick:)
-                forControlEvents:UIControlEventTouchUpInside];
+                        action:@selector(buttonClick:)
+              forControlEvents:UIControlEventTouchUpInside];
         [self.toolBar addSubview:_leftButton];
     }
     return _leftButton;
@@ -538,12 +538,12 @@ static NSInteger const kMinYear = 30;
         _rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
         _rightButton.tag = 10001;
         [_rightButton setTitle:@"确定"
-                     forState:UIControlStateNormal];
+                      forState:UIControlStateNormal];
         [_rightButton setTitleColor:[UIColor blackColor]
-                          forState:UIControlStateNormal];
+                           forState:UIControlStateNormal];
         [_rightButton addTarget:self
-                        action:@selector(buttonClick:)
-              forControlEvents:UIControlEventTouchUpInside];
+                         action:@selector(buttonClick:)
+               forControlEvents:UIControlEventTouchUpInside];
         [self.toolBar addSubview:_rightButton];
     }
     return _rightButton;
@@ -624,7 +624,7 @@ static NSInteger const kMinYear = 30;
             //默认前20年  后10年
             [marr addObject:[NSString stringWithFormat:@"%d年",i]];
         }
-        _yearArray = [marr copy];
+        _yearArray = self.isDescYear ? [[marr copy] reverseObjectEnumerator].allObjects : [marr copy];
     }
     return _yearArray;
 }
@@ -667,3 +667,4 @@ static NSInteger const kMinYear = 30;
 }
 
 @end
+

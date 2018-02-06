@@ -65,6 +65,7 @@
                                                                            rightText:@"完成"
                                                                       additionalText:@"至今"];
             picker.mode = MTDatePickerModeDate;
+            picker.isDescYear = YES;
             picker.minDate = [self dateFromString:@"19900101" format:@"yyyyMMdd"];
             picker.maxDate = [self dateFromString:@"20201231" format:@"yyyyMMdd"];
             picker.defaultDate = [NSDate date];

@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, MTDatePickerMode){
     MTDatePickerModeDateYearAndMonth,
 };
 
-/** 
+/**
  自定义日期控件
  可选三种模式  年月日  年月  年
  可设置最大日期  最小日期  默认日期
@@ -51,6 +51,8 @@ typedef NS_ENUM(NSInteger, MTDatePickerMode){
 /********** 展示方法 *************/
 /** 展示模式 */
 @property (nonatomic, assign) MTDatePickerMode mode;
+/** 年份是否为降序排列 */
+@property (nonatomic, assign) BOOL isDescYear;
 
 /** 展示 */
 - (void)show;
@@ -64,3 +66,4 @@ typedef NS_ENUM(NSInteger, MTDatePickerMode){
 
 
 @end
+
